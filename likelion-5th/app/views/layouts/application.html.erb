@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Likelion5th</title>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+    .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255,255,255,.38) solid !important;
+        border-radius: 4px !important;
+    }
+    
+    .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+    }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="left">
+        <!--
+          <a id='menu_toggle'><i class="material-icons">menu</i></a>
+        -->
+        <div class="wrapper hide-on-small-only">
+        </div>
+      </div>
+      <div class="right">
+        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="My Page" href="/home/mypage/1297" data-tooltip-id="c6b282b2-3cbf-afde-96c8-2fa89679d29f">
+    			<img src="<%= image_url("mypage-1f8644ea139b97fc24fab94ad6e4473ab826c6d5067eb7f95110dc057656251b.png") %>" alt="Mypage 1f8644ea139b97fc24fab94ad6e4473ab826c6d5067eb7f95110dc057656251b">
+        </a>
+        <a class="myedit tooltipped" data-position="bottom" data-delay="50" data-tooltip="내 정보 수정" href="/users/edit" data-tooltip-id="317f90de-113d-a0ca-32bd-847bad60724c">
+  		  	<img src="<%= image_url("setting-1396495e00e3caf6b0e11ab8b4a8229eedff2ba6e18941f6b15e3319e0e55249.png") %>" alt="Setting 1396495e00e3caf6b0e11ab8b4a8229eedff2ba6e18941f6b15e3319e0e55249">
+        </a>
+        <a class="logout tooltipped" data-position="bottom" data-delay="50" data-tooltip="로그아웃" rel="nofollow" data-method="delete" href="/users/sign_out" data-tooltip-id="c07aebd8-dd42-1793-4cd8-01fd59798de0">
+    			<img src="<%= image_url("logout-da9f45b465cd00c766d970581190af0fdffbdc9c476b7cae28fd3a2c7fe3f0e5.png") %>" alt="Logout da9f45b465cd00c766d970581190af0fdffbdc9c476b7cae28fd3a2c7fe3f0e5">
+        </a>
+      </div>
+    </header>
+    <nav>
+      <div class="topbar">
+    		<div class="top-wrapper">
+    			<div class="top-text">
+    				<a href="/">
+    				  <img src="<%= image_url("likelion-white-a930fbcdf3042a50ba882ece9c02f43536971297a8e143e212d9b92d653bfa44.png") %>" alt="Logo d68044b756355cb5d3075a8ecc3f3f31190a51a5130423ecdb5f39b452556425">
+            </a>
+          </div>
+    			<div class="top-btn">
+    				<div class="red-btn"></div>
+    			</div>
+    		</div>
+  	</div>
+  	<div id="menu" style="overflow:auto;">
+		<a href="/home/mypage/1297">
+			<div class="profile-wrapper">
+				<div class="profile">
+						<div class="profile-img" style="background-image: url(http://class.likelion.net/assets/profile-640eaa3d76dcfbb0db96fc587bd2a9975e0c30eb343c8a4cb8cbf28a01589617.png)"></div>
+	        	<div class="profile-p">
+				<p>
+					<span>손정기</span>님
+					<br>서울과학기술대
+				</p>
+	       	  </div>
+				</div>
+	    </div>
+		</a>
+		<ul>
+  	  <div class="list-wrapper">
+  			<div class="list">
+
+        	<a href="/assignments">
+
+        		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="23px" height="16px" viewBox="0 0 23 18" xml:space="preserve">
+  						<g>
+  							<defs>
+  								<path id="SVGID_1_" d="M15.374,4.09c0,0.308,0.098,0.578,0.294,0.809l3.642,4.078l-3.642,4.094
+  									c-0.196,0.22-0.294,0.49-0.294,0.809c0,0.319,0.098,0.589,0.294,0.809c0.206,0.22,0.45,0.33,0.734,0.33
+  									c0.284,0,0.524-0.11,0.72-0.33l5.066-5.696l-5.081-5.729c-0.196-0.22-0.436-0.33-0.72-0.33c-0.274,0-0.514,0.116-0.719,0.347
+  									C15.472,3.501,15.374,3.771,15.374,4.09 M6.505,3.281C6.309,3.05,6.074,2.935,5.8,2.935c-0.284,0-0.524,0.11-0.719,0.33L0,8.993
+  									l5.066,5.696c0.196,0.22,0.436,0.33,0.719,0.33c0.284,0,0.524-0.11,0.72-0.33c0.206-0.22,0.308-0.49,0.308-0.809
+  									c0-0.319-0.103-0.589-0.308-0.809L2.878,8.977l3.627-4.078C6.71,4.668,6.813,4.398,6.813,4.09C6.813,3.771,6.71,3.501,6.505,3.281
+  									 M14.346,0.673c-0.117-0.297-0.308-0.495-0.573-0.594c-0.264-0.11-0.524-0.105-0.778,0.016c-0.255,0.154-0.431,0.374-0.529,0.66
+  									L7.797,16.423c-0.098,0.297-0.093,0.589,0.015,0.875c0.137,0.286,0.333,0.484,0.587,0.594c0.274,0.099,0.533,0.088,0.778-0.033
+  									c0.255-0.132,0.431-0.347,0.529-0.644l4.669-15.667C14.473,1.251,14.463,0.959,14.346,0.673"></path>
+  							</defs>
+  							<use xlink:href="#SVGID_1_" overflow="visible" fill-rule="evenodd" clip-rule="evenodd" fill="#F59900"></use>
+  							<clipPath id="SVGID_2_">
+  								<use xlink:href="#SVGID_1_" overflow="visible"></use>
+  							</clipPath>
+  						</g>
+  					</svg>
+
+        		<span>과&nbsp;&nbsp;&nbsp;제</span>
+        	</a>
+  			</div>
+      </div>
+      <li class="list-wrapper">
+  			<div class="list" id="has_list">
+        	<a href="#">
+        	<svg version="1.1" baseProfile="basic" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18px" height="17.999px" viewBox="0.25 0.25 18 17.999" xml:space="preserve">
+  				<path fill="#F59900" d="M16.633,4.204h-2.391V1.797c0-0.853-0.726-1.547-1.617-1.547H1.867c-0.892,0-1.617,0.694-1.617,1.547v10.812
+  					c0,0.448,0.175,0.871,0.496,1.192c0.32,0.319,0.744,0.495,1.192,0.495c0.451,0,0.874-0.176,1.186-0.487l1.204-1.164
+  					c0.195,0.645,0.811,1.12,1.547,1.12h4.795c0.375,0,0.728,0.147,1.002,0.419l3.697,3.57c0.319,0.319,0.743,0.495,1.193,0.495
+  					c0.449,0,0.872-0.176,1.194-0.497c0.319-0.319,0.494-0.742,0.494-1.191V5.751C18.25,4.898,17.524,4.204,16.633,4.204z M2.336,13.006
+  					c-0.214,0.214-0.579,0.214-0.795-0.001c-0.109-0.109-0.166-0.246-0.166-0.397V1.797c0-0.233,0.221-0.422,0.492-0.422h10.758
+  					c0.271,0,0.492,0.189,0.492,0.422v6.469c0,0.233-0.221,0.422-0.492,0.422H7.83c-0.676,0-1.312,0.263-1.783,0.735L2.336,13.006z
+  					 M17.125,16.562c0,0.151-0.058,0.288-0.165,0.396c-0.218,0.217-0.575,0.222-0.803-0.006l-3.697-3.57
+  					c-0.478-0.479-1.114-0.742-1.79-0.742H5.875c-0.271,0-0.492-0.19-0.492-0.422v-0.592l1.452-1.403
+  					c0.266-0.264,0.62-0.411,0.995-0.411h4.795c0.892,0,1.617-0.694,1.617-1.547V5.329h2.391c0.271,0,0.492,0.189,0.492,0.422V16.562z
+  					 M7.281,7c0.466,0,0.844-0.378,0.844-0.844S7.747,5.312,7.281,5.312S6.438,5.691,6.438,6.156S6.815,7,7.281,7z M3.906,5.312
+  					c-0.466,0-0.844,0.378-0.844,0.844S3.441,7,3.906,7S4.75,6.622,4.75,6.156S4.372,5.312,3.906,5.312z M10.656,7
+  					C11.122,7,11.5,6.622,11.5,6.156s-0.378-0.844-0.844-0.844S9.812,5.691,9.812,6.156S10.191,7,10.656,7z"></path>
+  				</svg>
+
+        	<span>&nbsp;게시판<i class="fa fa-chevron-left "></i></span></a>
+       	  <ul id="dropdown-nav">
+             <li><a href="/boards/1/posts">공지사항</a></li>
+             <li><a href="/boards/2/posts">건의 사항</a></li>
+             <li><a href="/boards/3/posts">자유게시판</a></li>
+        	</ul>
+  			</div>
+      </li>
+      <div class="list-wrapper">
+        <div class="list">
+          <a href="/questions">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18px" height="20" viewBox="0.25 0.25 18 17.999" xml:space="preserve">
+            <path fill-rule="evenodd" clip-rule="evenodd" fill="#F59900" d="M9.045,5.977c0.565,0,1.023-0.458,1.023-1.023
+              c0-0.565-0.458-1.023-1.023-1.023c-0.565,0-1.023,0.458-1.023,1.023C8.023,5.519,8.481,5.977,9.045,5.977z M7.614,7.205v0.409h0.818
+              v6.136H7.614v0.409h3.273V13.75h-0.818V7.205H7.614z M9.25,17.432c4.519,0,8.182-3.663,8.182-8.182S13.769,1.068,9.25,1.068
+              S1.068,4.731,1.068,9.25S4.731,17.432,9.25,17.432z M9.25,18.25c4.971,0,9-4.029,9-9s-4.029-9-9-9s-9,4.029-9,9
+              S4.279,18.25,9.25,18.25z"></path>
+            </svg>
+
+            <span>&nbsp;질&nbsp;&nbsp;&nbsp;문</span>
+          </a>
+        </div>
+      </div>
+       <div class="list-wrapper">
+        <div class="list">
+          <a href="/contacts">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18px" height="20" viewBox="0.25 0.25 18 17.999" enable-background="new 0 0 200 200" xml:space="preserve">
+            <path fill-rule="evenodd" clip-rule="evenodd" fill="#E08A00" d="M3.695,0.346l2.143,2.991c0.144,0.206,0.201,0.434,0.17,0.686
+              c-0.031,0.252-0.134,0.466-0.308,0.64L3.88,6.482c1.038,1.46,2.205,2.837,3.5,4.133c1.275,1.274,2.647,2.441,4.117,3.499
+              l1.834-1.819c0.164-0.175,0.38-0.272,0.648-0.293c0.267-0.02,0.499,0.041,0.693,0.185l2.96,2.097
+              c0.195,0.144,0.309,0.337,0.339,0.578c0.031,0.242-0.036,0.45-0.2,0.624l-2.514,2.498L14.781,18c-0.319,0-0.794-0.084-1.426-0.254
+              c-0.632-0.17-1.336-0.411-2.112-0.725c-0.777-0.314-1.702-0.846-2.776-1.596c-1.074-0.75-2.141-1.655-3.199-2.713
+              C4.22,11.663,3.32,10.594,2.57,9.505c-0.75-1.09-1.285-2.002-1.604-2.737C0.647,6.032,0.409,5.313,0.249,4.609
+              C0.09,3.906,0.008,3.443,0.002,3.221C-0.003,3,0,2.834,0.01,2.72l2.498-2.497c0.186-0.175,0.393-0.247,0.624-0.216
+              C3.364,0.038,3.551,0.15,3.695,0.346z"></path>
+            </svg>
+            <span>&nbsp;연&nbsp;&nbsp;&nbsp;락</span>
+          </a>
+        </div>
+      </div>
+      <div class="list-wrapper" style="margin-bottom: 50px;">
+        <div class="list">
+          <a href="/renew/events">
+            <svg version="1.1" baseProfile="basic" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18px" height="20" viewBox="0 0 88.253 95.522" xml:space="preserve">
+            <g>
+              <path fill="#E08A00" d="M22.359,64.596l12.845,13.033c0.881,0.893,2.048,1.346,3.214,1.346c1.125,0,2.251-0.417,3.126-1.257
+                l25.599-24.568c1.798-1.728,1.857-4.583,0.129-6.381c-1.722-1.798-4.58-1.851-6.381-0.129L38.506,68.122l-9.719-9.86
+                c-1.748-1.78-4.604-1.792-6.381-0.047C20.631,59.966,20.61,62.821,22.359,64.596z"></path>
+              <path fill="#E08A00" d="M81.834,12.786h-8.039V9.778C73.795,4.384,69.409,0,64.017,0s-9.778,4.384-9.778,9.778v3.009H31.531V9.778
+                C31.531,4.384,27.145,0,21.753,0s-9.778,4.384-9.778,9.778v3.009H6.42c-3.54,0-6.42,2.879-6.42,6.423v16.647v53.249
+                c0,3.537,2.879,6.417,6.42,6.417h75.414c3.54,0,6.42-2.879,6.42-6.417V35.856V19.209C88.253,15.666,85.374,12.786,81.834,12.786z
+                 M60.257,9.778c0-2.074,1.686-3.761,3.761-3.761s3.761,1.686,3.761,3.761v3.009v9.026c0,2.074-1.686,3.761-3.761,3.761
+                s-3.761-1.686-3.761-3.761v-9.026V9.778z M17.993,9.778c0-2.074,1.686-3.761,3.761-3.761s3.761,1.686,3.761,3.761v3.009v9.026
+                c0,2.074-1.686,3.761-3.761,3.761s-3.761-1.686-3.761-3.761v-9.026V9.778z M81.834,89.505l-75.816-0.4V35.856h76.123L81.834,89.505
+                z"></path>
+            </g>
+            </svg>
+            <span>&nbsp;이벤트</span>
+</a>        </div>
+      </div>
+		</ul>
+  </div>
+    </nav>
+    <div class="sidenav-background"></div>
+      <div class="modal-background"></div>
+      <section id="screen_width" style="width: 1296px; min-height: 781px">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <article id="home" class="container">
+          <div class="row">
+            <div class="col s12 m11 l11">
+              <%= yield %>
+            </div>
+          </div>
+        </article>
+      </section>
+  </body>
+  <footer style="width: 1296px;">
+  	<div class="container">
+  		<div class="intro">
+  			ⓒ 멋쟁이 사자처럼 X 서울과학기술대학교 2017
+  		</div>
+  		<div class="sponsor">
+  		</div>
+  	</div>
+  </footer>
+</html>
+<script>
+$(document).ready(function(){
+  function e(){
+    var e=$(window).width()-200,t=$(window).width();
+    return s=$(window).width()<600?t:$("nav").hasClass("slidein")?e:$("nav").hasClass("slideout")?t:e
+  }
+  function t(){
+    $("nav").hasClass("slideout")?$("nav").removeClass("slideout").addClass("slidein"):$("nav").hasClass("slidein")?$("nav").removeClass("slidein").addClass("slideout"):$(window).width()<600?$("nav").addClass("slidein"):$("nav").addClass("slideout")}
+  function n(){
+    $(window).width()<600&&$("nav").hasClass("slidein")&&$(".sidenav-background").addClass("sidenav-on").removeClass("sidenav-off")}
+  function i(){
+    $("section").css({width:s,"min-height":l}),$("footer").css({width:s})}
+  function o(){
+    var e=$("#video-wrapper").height();
+    $(".lecture-list").css({height:e})}
+  function r(){
+    var e=$("#video-wrapper").width();
+    $("#video").css({width:e,height:e/5*3})}
+  function a(){
+    if($(window).width()>1200)
+      var e=$(window).width()/2;
+    else
+      var e=$(window).width()-40;$("#video").css({width:e,height:e/5*3})}
+  function r(){
+    var e=$(".video-wrapper").width();
+        $("#video").css({width:e,height:e/5*3})}
+  var s,l=$(window).height()-120;$("#list-toggle").on("click",function(){
+    $(".lecture-list").is(":hidden")?$(".lecture-list").slideDown():$(".lecture-list").slideUp()});
+  $("#video-toggle").on("click",function(){
+    if(t(),e(),i(),$(this).toggleClass("video-on"),$(this).hasClass("video-on"))
+    {
+      $(".col.l11").removeClass("l11").addClass("l12"),
+      $("#video-wrapper").removeClass("l8").addClass("l12"),
+      $("#screen_width").css({padding:0}),
+      $("#video").css({"margin-left":-40}),
+      $(".lecture-list").hide(),
+      $(".video").css({"text-align":"left"}),a();
+    }
+    else
+    {
+      $(".col.l11").removeClass("l12").addClass("l11"),
+      $("#video-wrapper").removeClass("l12").addClass("l8"),
+      $("#screen_width").css({padding:35}),
+      $(".lecture-list").show(),
+      $(".video").css({"text-align":"center"}),r();
+      var n=5*$("#video-wrapper").width()/7;$("#video").css({"margin-left":0,width:n,height:n/5*3})
+    }}),function(){e(),n(),i(),o()}(),$(window).resize(function(){e(),i(),o()}), 
+    $(".sidenav-background").on("click",function(){$("nav").removeClass("slidein").addClass("slideout"),
+    $(this).removeClass("sidenav-on").addClass("sidenav-off")}),$("nav .red-btn").on("click",function(){s<600?($("nav").removeClass("slidein").addClass("slideout"),
+    $(".sidenav-background").removeClass("sidenav-on").addClass("sidenav-off")):(t(),e(),n(),i())}),
+    $("#has_list > a").on("click",function(e){e.preventDefault();
+    var t=$(this).parent().parent();
+    $(this).parent().parent().index()-1;
+    $(t).find("ul").is(":hidden")?($(t).siblings().find("ul").stop().slideUp(),
+    $(t).siblings().find(".fa").stop().removeClass("turn_to_down"),
+    $(t).find("ul").stop().slideDown(),$(this).find(".fa").stop().addClass("turn_to_down")):($(t).find("ul").stop().slideUp(),$(this).find(".fa").stop().removeClass("turn_to_down"))})})
+</script>

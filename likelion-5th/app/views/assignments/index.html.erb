@@ -1,0 +1,12 @@
+<% @assignment.each do |assignment| %>
+  <div class="field">
+    <%= assignment.title %>
+    <% if assignment.users.find_by(email: current_user.email).nil? %>
+    <%= link_to '제출하기', new_assignment_submission_path(assignment) %>
+    <% else %>
+    <%= link_to '훔쳐보기', assignment_submissions_path(assignment) %>
+    <% check = User.find(current_user.id).submissions.ids & Assignment.find(assignment.id).submissions.ids %>
+    <%= link_to '수정하기', edit_assignment_submission_path(assignment, id: check[0]) %>
+    <% end %>
+  </div>  
+<% end %>

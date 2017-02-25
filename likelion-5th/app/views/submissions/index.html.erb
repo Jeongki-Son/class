@@ -1,0 +1,6 @@
+<% @assignment.submissions.each do |submission| %>
+  <%= User.find(submission.user_id).email %><br>
+  <%= submission.c9url %><br>
+  <%= submission.giturl %><br>
+  <%= submission.content %><br><br>
+<% end %>
