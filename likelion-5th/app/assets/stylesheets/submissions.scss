@@ -1,3 +1,254 @@
 // Place all the styles related to the submissions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.row {
+    margin-bottom: 20px;
+}
+.row .col.l11 {
+    width: 91.66667%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}
+.row .col {
+    float: left;
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+#submission-new {
+    border: 1px solid #edeeee;
+}
+.main-container {
+    padding: 35px 40px;
+}
+#submission-edit .title, #submission-new .title {
+    margin: 0px;
+    margin-bottom: 15px;
+}
+h5 {
+    font-size: 1.64rem;
+    line-height: 110%;
+    margin: 0.82rem 0 0.656rem 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    line-height: 1.1;
+}
+.submission-form {
+    line-height: 1em;
+}
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+    background-color: transparent;
+    height: 2rem;
+    width: 100%;
+    transition: all .3s;
+}
+#submission-edit .submission-submit, #submission-new .submission-submit {
+    text-align: right;
+}
+input.btn-orange, button.btn-orange {
+    font-family: 'Nanum Barun Gothic', sans-serif;
+    padding: 4.4px 10px;
+    line-height: 1.5;
+}
+.btn-orange {
+    padding: 5px 10px;
+    color: white;
+    background-color: #F79634;
+    border: 0;
+    cursor: pointer;
+}
+label {
+    font-size: 0.8rem;
+    color: #9e9e9e;
+}
+
+
+.row .col.l3 {
+    width: 25%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}
+article#submission-craft .craft-wrapper {
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #edeeee;
+    margin-bottom: 20px;
+}
+article#submission-craft .craft-wrapper .craft-screen_shot {
+    width: 100%;
+    height: auto;
+}
+a {
+    outline: 0;
+    text-decoration: none;
+}
+article#submission-craft .craft-wrapper .craft-screen_shot .thumbnail {
+    height: 175px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+article#submission-craft .craft-wrapper .craft-assess-wrapper {
+    text-align: center;
+}
+article#submission-craft .craft-wrapper .craft-assess-wrapper .craft-assess {
+    display: inline-block;
+    width: 32%;
+    text-align: center;
+    cursor: pointer;
+}
+article#submission-craft .craft-wrapper .craft-assess-wrapper .craft-assess img {
+    width: 48px;
+}
+.craft-assess-wrapper .craft-assess i {
+    margin-bottom: 5px;
+    font-size: 32px;
+    color: silver;
+}
+.love {
+    color: red !important;
+}
+article#submission-craft .craft-wrapper .craft-assess-wrapper .craft-assess p {
+    line-height: 0%;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.fa-heart:before {
+    content: "\f004";
+}
+
+article#post-show {
+    background-color: white;
+}
+@media only screen and (min-width: 993px)
+{
+    .row .col.l11 {
+    width: 91.66667%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+    }
+}
+
+article#post-show .show-wrapper {
+    border: 1px solid silver;
+}
+.main-container {
+    padding: 35px 40px;
+}
+article#post-show .show-wrapper .header-top {
+    border-bottom: 1px dotted silver;
+}
+article#post-show .show-wrapper .header-top .profile-image {
+    display: inline-block;
+    vertical-align: top;
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 7px;
+}
+article#post-show .show-wrapper .header-top .username {
+    font-size: 14px;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: super;
+}
+article#post-show .show-wrapper .header-top .username p {
+    margin: 0px auto;
+}
+article#post-show .show-wrapper .header-top .username p span {
+    font-weight: bold;
+}
+a {
+    color: black;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+article#post-show .show-wrapper .header-top .assignment {
+    font-size: 23px;
+    font-weight: bold;
+    margin-right: 10px;
+    display: inline-block;
+}
+article#post-show .show-wrapper p {
+    padding: 0px 5px;
+}
+article#post-show .show-wrapper .body {
+    padding: 0px 15px 0px 15px;
+    border-bottom: 1px dotted silver;
+}
+.modal-screen_shot {
+    cursor: pointer;
+    text-align: center;
+}
+.modal-screen_shot .thumbnail {
+    height: 175px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.craft-assess-wrapper {
+    text-align: center;
+}
+.craft-assess-wrapper .craft-assess {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+.craft-assess-wrapper .craft-assess img {
+    height: 48px;
+    cursor: pointer;
+}
+img {
+    border: 0;
+}
+.craft-assess-wrapper .craft-assess i {
+    margin-bottom: 5px;
+    font-size: 32px;
+    color: silver;
+}
+.craft-assess-wrapper .craft-assess i {
+    margin-bottom: 5px;
+    font-size: 32px;
+    color: silver;
+}
+.craft-assess-wrapper .craft-assess p {
+    margin: 5px 0px 0px 0px;
+    line-height: 0%;
+    font-size: 13px;
+}
+article#post-show .option-btn {
+    text-align: right;
+    margin: 10px;
+}
+article#post-show .option-btn>a {
+    padding: 5px 10px;
+    color: silver;
+}
+article#post-show .comment-create {
+    padding: 0px 10px;
+    background-color: #f9f9f9;
+}
+article#post-show .comment-create form {
+    text-align: center;
+    padding: 10px;
+}
+article#post-show #comment_content {
+    display: inline-block;
+    height: 2em;
+    border: none;
+    width: 88%;
+}
+article#post-show .post-comment-wrapper {
+    margin-top: 15px;
+}

@@ -1,0 +1,21 @@
+<h2>
+  질문
+  <%= link_to "질문 만들기", new_survey_question_path(@survey) %>
+</h2>
+<hr/>
+
+<table>
+  <colgroup>
+    <col>
+    <col width="250">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "question", collection: @questions %>
+  </tbody>
+</table>

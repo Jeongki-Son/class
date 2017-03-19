@@ -1,6 +1,33 @@
-<% @assignment.submissions.each do |submission| %>
-  <%= User.find(submission.user_id).email %><br>
-  <%= submission.c9url %><br>
-  <%= submission.giturl %><br>
-  <%= submission.content %><br><br>
-<% end %>
+<article id="submission-craft">
+		<div class="row">
+		  <% @assignment.submissions.each do |submission| %>
+			<div class="col s3 m3 l3">
+				<div class="craft-wrapper">
+					<div class="craft-screen_shot">
+							<a href="/assignments/<%= @assignment.id %>/submissions/<%= submission.id %>">
+								<% if submission.imagefile.url(:thumb) == nil %>
+									<div class="thumbnail" style="background-image: url(https://classlion.s3.amazonaws.com/submission/image/4581/2016-05-02_23_18_29.PNG);"></div>
+								<% else %>
+									<div class="thumbnail" style="background-image: url(<%= submission.imagefile.url(:thumb) %>);"></div>
+								<% end %>
+              </a>
+          </div>
+					<div class="craft-assess-wrapper">
+						<%= User.find(submission.user_id).name %>
+						<br>
+						<div class="craft-assess">
+							<a target="_blank" href="<%= submission.giturl %>"><img src="<%= image_url("GitHub-ae28e4e3aa4a5605d97d8a493b4a01fe6a3a876d13f4553084109c140a65a7c6.png") %>" alt="Github ae28e4e3aa4a5605d97d8a493b4a01fe6a3a876d13f4553084109c140a65a7c6"></a>
+						</div>
+						<div class="craft-assess">
+							<a target="_blank" href="<%= submission.herokuurl %>"><img src="<%= image_url("heroku.svg") %>" alt="C9 f291fd77816ac7a89a826a465cf62743ea7f1962d2e4f7f197b8c19beefc6f4f"></a>
+						</div>
+						<div class="craft-assess">
+							<i class="fa fa-heart love" aria-hidden="true"></i>
+							<p><%= submission.likes.count %></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<% end %>
+		</div>
+</article>

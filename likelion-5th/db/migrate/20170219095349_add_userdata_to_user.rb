@@ -3,5 +3,6 @@ class AddUserdataToUser < ActiveRecord::Migration[5.0]
     add_column :users, :name, :string
     add_column :users, :phone, :string
     add_column :users, :photo, :string
+    add_column :users, :profile, :string
   end
 end

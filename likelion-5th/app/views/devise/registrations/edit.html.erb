@@ -1,43 +1,113 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<!--<h2>Edit <%= resource_name.to_s.humanize %></h2>-->
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<!--<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>-->
+<!--  <%= devise_error_messages! %>-->
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+<!--  <div class="field">-->
+<!--    <%= f.label :email %><br />-->
+<!--    <%= f.email_field :email, autofocus: true %>-->
+<!--  </div>-->
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+<!--  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>-->
+<!--    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>-->
+<!--  <% end %>-->
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+<!--  <div class="field">-->
+<!--    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />-->
+<!--    <%= f.password_field :password, autocomplete: "off" %>-->
+<!--    <% if @minimum_password_length %>-->
+<!--      <br />-->
+<!--      <em><%= @minimum_password_length %> characters minimum</em>-->
+<!--    <% end %>-->
+<!--  </div>-->
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+<!--  <div class="field">-->
+<!--    <%= f.label :password_confirmation %><br />-->
+<!--    <%= f.password_field :password_confirmation, autocomplete: "off" %>-->
+<!--  </div>-->
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+<!--  <div class="field">-->
+<!--    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />-->
+<!--    <%= f.password_field :current_password, autocomplete: "off" %>-->
+<!--  </div>-->
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+<!--  <div class="actions">-->
+<!--    <%= f.submit "Update" %>-->
+<!--  </div>-->
+<!--<% end %>-->
 
-<h3>Cancel my account</h3>
+<!--<h3>Cancel my account</h3>-->
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<!--<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>-->
 
-<%= link_to "Back", :back %>
+<!--<%= link_to "Back", :back %>-->
+
+<article id="user-edit">
+	<div class="row">
+		<div class="col s12 m11 l11">
+			<div class="edit-wrapper col s12 m8 l6 offset-m2 offset-l3">
+				<!--<div class='main-container'>-->
+				<div class="container">
+					<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+			 			<p></p>
+
+    				<div class="field">
+			 			  <%= f.label :name, "이름", class: "active" %><br>
+							<%= f.text_field :name, autofocus: true %>
+			 		 	</div>
+
+			 			<div class="field">
+			 			  <%= f.label :email, "이메일", class: "active" %><br />
+              <%= f.email_field :email, autofocus: true %>
+			 		 	</div>
+
+						<div class="field">
+			 			  <label for="user_자기소개" class="active">자기소개</label><br>
+							<textarea autofocus="autofocus" name="user[description]" id="user_description"></textarea>
+			 		 	</div>
+
+
+			   		<div class="field">
+			   		  <%= f.label :current_password, "현재비밀번호" %> <i>(현재 비밀번호를 입력하셔야 수정가능합니다.)</i><br />
+              <%= f.password_field :current_password, autocomplete: "off" %>
+						</div>
+
+			  		<div class="field">
+			  		  <%= f.label :password, "비밀번호" %> <i>(변경하고 싶지 않으시다면, 빈칸으로 남겨두세요.)</i><br />
+              <%= f.password_field :password, autocomplete: "off" %>
+					  </div>
+
+			  		<div class="field">
+							<%= f.label :password_confirmation, "비밀번호 확인" %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+			  		</div>
+						<div class="field">
+						  <%= f.label :phone, "전화", class: "active" %><br>
+							<%= f.text_field :phone %>
+						</div>
+
+			 			<div class="field">
+				  	  <label for="user_profile">Profile</label><br>
+					    <%= f.file_field :profile %>
+			 			</div>
+
+
+			  		<div class="btn-group">
+			 				<input type="submit" name="commit" value="수정하기" class="btn-lightgreen">&nbsp;&nbsp;
+							<a href="/"><button class="btn-gray">홈으로</button></a>
+			  		</div>
+            <% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+</article>
+
+<style>
+  textarea {
+    width: 100%;
+    height: 3rem;
+    background-color: transparent;
+}
+</style>

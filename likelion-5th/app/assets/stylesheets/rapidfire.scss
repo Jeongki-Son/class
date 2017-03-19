@@ -1,0 +1,254 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.row {
+    margin-bottom: 20px;
+}
+.row .col.l11 {
+    width: 91.66667%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}
+article#rapidfire .table-wrapper {
+    background-color: white;
+}
+.main-container {
+    padding: 35px 40px;
+}
+article#rapidfire .table-wrapper .post-img {
+    width: 36px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+img {
+    border: 0;
+}
+article#rapidfire .table-wrapper h4 {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px;
+}
+h4 {
+    font-size: 2.28rem;
+    line-height: 110%;
+    margin: 1.14rem 0 0.912rem 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    line-height: 1.1;
+}
+strong {
+    font-weight: 500;
+}
+article#rapidfire .table-wrapper .write {
+    text-align: right;
+}
+.wrap {
+    float: left;
+}
+.search {
+    width: 100%;
+    position: relative;
+}
+.searchTerm {
+    width: 100%;
+    border: 3px solid #f29500;
+    padding: 5px;
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    color: black;
+}
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+    background-color: transparent;
+    height: 2rem;
+    width: 100%;
+    transition: all .3s;
+}
+.searchButton {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 35px;
+    height: 29px;
+    border: 1px solid #f29500;
+    background: #f29500;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+article#rapidfire .table-wrapper .write i {
+    font-size: 20px;
+    vertical-align: middle;
+}
+.fa-search:before {
+    content: "\f002";
+}
+input.btn-darkyellow, button.btn-darkyellow {
+    font-family: 'Nanum Barun Gothic', sans-serif;
+    padding: 4.4px 10px;
+    line-height: 1.5;
+}
+article#rapidfire .table-wrapper .write i {
+    font-size: 20px;
+    vertical-align: middle;
+}
+article#rapidfire .table-wrapper table {
+    line-height: 150%;
+    font-size: 13px;
+    background-color: white;
+    border-collapse: collapse;
+}
+.flickr_pagination {
+    margin: 20px;
+    text-align: center;
+    padding: 0.3em;
+    cursor: default;
+}
+.flickr_pagination .previous_page {
+    margin-right: 1em;
+}
+.flickr_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    color: #f29500;
+}
+.flickr_pagination a, .flickr_pagination span, .flickr_pagination em {
+    padding: 0.2em 0.5em;
+}
+.flickr_pagination a {
+    background-color: #F7F7F8;
+    border: 1px solid #F7F7F8;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.flickr_pagination .next_page {
+    margin-left: 1em;
+}
+article#rapidfire .table-wrapper table {
+    line-height: 150%;
+    font-size: 13px;
+    background-color: white;
+    border-collapse: collapse;
+}
+table {
+    width: 100%;
+    display: table;
+}
+table, th, td {
+    border: none;
+}
+thead {
+    border-bottom: 1px solid #d0d0d0;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+article#rapidfire .table-wrapper table {
+    line-height: 150%;
+    font-size: 13px;
+    background-color: white;
+    border-collapse: collapse;
+}
+table.bordered>thead>tr, table.bordered>tbody>tr {
+    border-bottom: 1px solid #d0d0d0;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+td, th {
+    padding: 6px 5px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    border-radius: 2px;
+}
+table, th, td {
+    border: none;
+}
+article#rapidfire .table-wrapper table [data-field="author"], article#rapidfire .table-wrapper table [data-field="university"] {
+    width: 80px;
+}
+article#rapidfire .table-wrapper table [data-field="date"] {
+    width: 100px;
+}
+article#rapidfire .table-wrapper table [data-field="view"] {
+    width: 25px;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row .col.l3 {
+    width: 25%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}
+article#rapidfire .craft-wrapper {
+    padding: 10px;
+    background-color: white;
+    margin-bottom: 20px;
+    border: 2px solid #edeeee;
+}
+article#rapidfire .craft-wrapper .craft-screen_shot {
+    padding: 5px;
+    text-align: center;
+}
+article#rapidfire .craft-wrapper .craft-explain {
+    text-align: center;
+    color: #636363;
+    font-size: 13px;
+    line-height: 3em;
+}
+article#rapidfire .craft-wrapper .craft-screen_shot .thumbnail {
+    height: 175px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+article#rapidfire .craft-wrapper .craft-assess-wrapper {
+    text-align: center;
+}
+article#rapidfire .craft-wrapper .craft-assess-wrapper .craft-plain-assess {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+.btn-gray {
+    padding: 5px 10px;
+    color: #9b9ead;
+    background-color: #dde4e9;
+    border: 0;
+    cursor: pointer;
+}
+.btn-darkorange {
+    padding: 5px 10px;
+    color: white;
+    background-color: #FF7022;
+    border: 0;
+    cursor: pointer;
+}
+.btn-darkyellow {
+    padding: 5px 10px;
+    color: white;
+    background-color: #ffc600;
+    border: 0;
+    cursor: pointer;
+}
+label {
+    font-size: 1rem;
+    color: #9e9e9e;
+}

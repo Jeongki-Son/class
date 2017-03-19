@@ -1,3 +1,68 @@
 // Place all the styles related to the assignments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.row {
+    margin-bottom: 20px;
+}
+.row .col {
+    float: left;
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+.row .col.l3 {
+    width: 25%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}
+article#assignment-craft .craft-wrapper {
+    padding: 10px;
+    background-color: white;
+    margin-bottom: 20px;
+    border: 2px solid #edeeee;
+}
+article#assignment-craft .craft-wrapper .craft-screen_shot {
+    padding: 5px;
+    text-align: center;
+}
+article#assignment-craft .craft-wrapper .craft-explain {
+    text-align: center;
+    color: #636363;
+    font-size: 13px;
+    line-height: 3em;
+}
+article#assignment-craft .craft-wrapper .craft-screen_shot .thumbnail {
+    height: 175px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+article#assignment-craft .craft-wrapper .craft-assess-wrapper {
+    text-align: center;
+}
+article#assignment-craft .craft-wrapper .craft-assess-wrapper .craft-plain-assess {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+.btn-gray {
+    padding: 5px 10px;
+    color: #9b9ead;
+    background-color: #dde4e9;
+    border: 0;
+    cursor: pointer;
+}
+.btn-darkorange {
+    padding: 5px 10px;
+    color: white;
+    background-color: #FF7022;
+    border: 0;
+    cursor: pointer;
+}
+.btn-darkyellow {
+    padding: 5px 10px;
+    color: white;
+    background-color: #ffc600;
+    border: 0;
+    cursor: pointer;
+}

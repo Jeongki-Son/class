@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'devise', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
     .en-markup-crop-options {
@@ -24,6 +24,11 @@
   </head>
 
   <body>
+    <div class="background-wrap">
+		  <div class="background"></div>
+	  </div>
+	  <img id="lion-logo" src=<%= image_url("likelion_gungsei-26652fa6b7777e303f2ecafcf827aa2fe5441bd5d1047586dcc9c38425742397.png") %> alt="Likelion gungsei 26652fa6b7777e303f2ecafcf827aa2fe5441bd5d1047586dcc9c38425742397">
       <%= yield %>
+    <div class="hiddendiv common"></div>
   </body>
 </html>

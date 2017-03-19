@@ -1,11 +1,20 @@
-<%= form_for([@board, @post]) do |f| %>
-  <div class="field">
-    <%= f.label '제목' %><br>
-    <%= f.text_field :title %><br>
-    <%= f.label '내용' %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="action">
-    <%= f.submit '제출하기' %>
-  </div>
-<% end %>
+<%= javascript_include_tag Ckeditor.cdn_url %>
+<article id="post-new">
+	<div class="row">
+		<div class="col s12 m11 l11">
+			<div class="post-edit">
+				<div class="main-container">
+				  <%= form_for([@board, @post]) do |f| %>
+            <div class="field" style="margin-bottom:20px;">
+              <%= f.text_field :title, placeholder: "제목", style: "margin-bottom:15px;" %>
+              <%= f.cktext_area :content, class: 'someclass', ckeditor: { language: 'ko'} %>
+            </div>
+            <div class="submit">
+              <%= f.submit '작성완료', class: "btn-lightgreen" %>
+            </div>
+          <% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</article>

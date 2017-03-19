@@ -1,5 +1,127 @@
-<%= @user.email %><br>
-<%= @submission.c9url %><br>
-<%= @submission.giturl %><br>
-<%= @submission.content %><br>
-<%= link_to '수정하기', edit_assignment_submission_path %>
+<article id="post-show">
+	<div class="row">
+		<div class="col s12 m11 l11">
+			<div class=" show-wrapper">
+				<div class="main-container">
+					<div class="header-top">
+						<!--<div class='profile-image'>-->
+						<% if @submission.user.profile.url == nil %>
+							<div class="profile-image" style="background-image: url(<%= image_url("profile.png") %>);"></div>
+						<% else %>
+							<div class="profile-image" style="background-image: url(<%= @submission.user.profile.url %>);"></div>
+						<% end %>
+						<!--</div>-->
+						<div class="username">
+							<p><span><a href="/home/mypage/<%= @submission.user.id %>"><%= @submission.user.name %></a></span> - 서울과학기술대</p>
+						</div>
+						<div class="assignment">
+							<%= @assignment.title %>
+						</div>
+					</div>
+
+					<br>
+
+					<div class="body">
+						<div class="modal-screen_shot">
+								<div class="thumbnail" style="background-image: url(<%= @submission.imagefile.url(:thumb) %>);"></div>
+						</div>
+							<p><%= raw @submission.content %></p>
+
+						<br>
+
+						<div class="craft-assess-wrapper">
+							<div class="craft-assess">
+                            <a target="_blank" href="<%= @submission.giturl %>"><img src="<%= image_url("GitHub-ae28e4e3aa4a5605d97d8a493b4a01fe6a3a876d13f4553084109c140a65a7c6.png") %>" alt="Github ae28e4e3aa4a5605d97d8a493b4a01fe6a3a876d13f4553084109c140a65a7c6"></a>
+							</div>
+							&nbsp;&nbsp;&nbsp;
+							<div class="craft-assess">
+								<a target="_blank" href="<%= @submission.herokuurl %>"><img src="<%= image_url("heroku.svg") %>" alt="C9 f291fd77816ac7a89a826a465cf62743ea7f1962d2e4f7f197b8c19beefc6f4f"></a>
+		         			</div>
+		         			&nbsp;&nbsp;&nbsp;
+							<div class="craft-assess btn-like-wrapper">
+								<% if current_user.is_like?(@submission) %>
+									<%= link_to(raw(("<i class='fa fa-heart love'> </i>")), likes_path(submission_id: @submission.id), class: "submission-btn-like") %>
+	              <% else %>
+	              	<%= link_to(raw(("<i class='fa fa-heart'> </i>")), likes_path(submission_id: @submission.id), class: "submission-btn-like") %>
+	              <% end %>
+								<p class="num-like" id="submission-<%= @submission.id %>-like-count"><%= @submission.likes.count %></p>
+							</div>
+						</div>
+
+						<div class="option-btn">
+						    <% if user_signed_in? %>
+						    <%= link_to '수정하기', edit_assignment_submission_path if @submission.updatable_by? current_user %>
+						    <% end %>
+						    <%= link_to '다른 과제 훔쳐보기', assignment_submissions_path %>
+						</div>
+					</div>
+
+			<!--댓글 show Start--><div class="post-comment-wrapper">
+						<% @submission.comments.each do |comment| %>
+						<div class="post-comment">
+							<div class="profile-image" style="background-image: url(<%= comment.user.profile.url %>)"></div>
+							<div class="content">
+								<p><a href="/home/mypage/<%= comment.user.id %>"><%= comment.user.name %></a></p>
+								<%= comment.content %> &nbsp;&nbsp; - &nbsp; &nbsp; 
+								<% if ((Time.now-comment.created_at)/86400).to_i < 7 %>
+							      <%= ((Time.now-comment.created_at)/86400).to_i %>일 전
+							    <% elsif ((@day-comment.created_at)/(86400*7)).to_i < 4 %>
+							      <%= ((Time.now-comment.created_at)/(86400*7)).to_i %>주 전
+							    <% else %>
+							      <%= ((Time.now-comment.created_at)/(86400*30)).to_i %>달 전
+							    <% end %> 
+								&nbsp;&nbsp;
+								<div class="content-tool">
+									<% if user_signed_in? %>
+										<% if comment.updatable_by? current_user %>
+									<a style="cursor:pointer" id="posts-comment-toggle<%= comment.id %>"><i class="fa fa-pencil"></i></a>
+									<script>
+										$('#posts-comment-toggle<%= comment.id %>').click(function(){
+											var toggle = $(this).parent().next();
+											if( toggle.is(':hidden') ){
+													toggle.slideDown();
+											} else {
+													toggle.slideUp();
+											}
+										});
+									</script>
+									&nbsp;&nbsp;
+									<% end %>
+									<% if comment.deletable_by? current_user %>
+									<a rel="nofollow" data-method="delete" href=<%= "/assignments/"+@assignment.id.to_s+"/submissions/"+@submission.id.to_s+"/comments/"+comment.id.to_s %>><i class="fa fa-trash-o"></i></a>
+									<% end %>
+									<% end %>
+								</div>
+								<div id="comment-edit<%= comment.id %>" class="comment-edit" style="display: none;">
+									<%= form_for assignment_submission_comment_path(submission_id: @submission.id), method: :patch, url: "/boards/"+@assignment.id.to_s+"/posts/"+@submission.id.to_s+"/comments/"+comment.id.to_s, class: "new_comment" do |f| %>
+									<%= f.text_field :content, value: comment.content, name:"comment[content]", class:"comment_content" %>
+									<div class="btn-group">
+										<input type="submit" name="commit" value="수정하기" class="btn-darkyellow">
+									</div>
+									<% end %>
+								</div>
+							</div>
+						</div>
+						<% end %>
+					</div>
+					<!--댓글 div END -->
+
+					<div class="comment-create">
+						<%= form_for [@assignment, @submission, @submission.comments.build], class: "new_comment" do |f| %>
+						  <div class="field">
+							<%= f.text_field :content, placeholder: "댓글을 입력해주세요", class: "input-text" %>
+							<%= f.submit '댓글 달기', class: "btn-darkyellow input-btn" %>
+						  </div>
+						<% end %>
+						<!--<form class="new_comment" id="new_comment" action="/assignments/5/submissions/3765/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="qLAt54kchOvZ3xap8X6641ZbCzz8CyosC5H5763O5iTHdAZPeRmxoYMyVV3tgX6mze4Ef9Id0QAHjGMTDY8lwA==">-->
+						<!--	<div class="field">-->
+						<!--		<input placeholder="댓글을 입력해주세요" class="input-text" type="text" name="comment[content]" id="comment_content">-->
+						<!--		<input type="submit" name="commit" value="댓글 달기" class="btn-darkyellow input-btn">-->
+						<!--	</div>-->
+						<!--</form>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</article>

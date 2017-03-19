@@ -1,4 +1,123 @@
-<%= @post.title %>
-<%= @post.content %>
-<%= link_to '수정하기', edit_board_post_path %>
-<%= link_to '삭제하기', board_post_path, method: :delete %>
+<article id="post-show">
+	<div class="row">
+		<div class="col s12 m11 l11">
+			<div class=" show-wrapper">
+				<div class="main-container">
+					<div class="header-top">
+						<div class="header-bottom">
+							<% if User.find(@post.user_id).profile.url == nil %>
+								<div class="username" style="background-image: url(<%= image_url("profile.png") %>)"></div>
+							<% else %>
+								<div class="username" style="background-image: url(<%= User.find(@post.user_id).profile.url %>);"></div>
+							<% end %>
+							<a href="/home/mypage/1"><%= User.find(@post.user_id).name %></a>
+						</div>
+						&nbsp;-&nbsp;
+						<div class="title">
+							<p><%= @post.title %></p>
+						</div>
+						<div class="post-type">
+							<p>| &nbsp;&nbsp;<%= @board.title %></p>
+						</div>
+						<div class="view">
+							<img src="<%= image_url("view-82f567e85584651c24360a8688ef96d7b5490efa22c5f5edd6280d7ac95d4d47.png") %>" alt="View 82f567e85584651c24360a8688ef96d7b5490efa22c5f5edd6280d7ac95d4d47">
+							<span><%= @post.impressionist_count %></span>
+						</div>
+						<div class="comment">
+							<img src="<%= image_url("comment-6b33ba47fcbf6621550c5bb0ab08c2d5ee5f388b144eb1ee9b9a5e2251b04e32.png") %>" alt="Comment 6b33ba47fcbf6621550c5bb0ab08c2d5ee5f388b144eb1ee9b9a5e2251b04e32">
+							<span>0</span>
+						</div>
+						<div class="date">
+							<% if ((@day-@post.created_at)/86400).to_i < 7 %>
+					      <p><%= ((@day-@post.created_at)/86400).to_i %>일 전</p>
+					    <% elsif ((@day-@post.created_at)/(86400*7)).to_i < 4 %>
+					      <p><%= ((@day-@post.created_at)/(86400*7)).to_i %>주 전</p>
+					    <% else %>
+					      <p><%= ((@day-@post.created_at)/(86400*30)).to_i %>달 전</p>
+					    <% end %>
+						</div>
+					</div>
+	
+					<div class="body">
+						
+						<%= raw @post.content %>
+						
+						<div class="option-btn">
+					    <% if user_signed_in? %>
+								<%= link_to '수정하기', edit_board_post_path if @post.updatable_by? current_user %>
+		            <%= link_to '삭제하기', board_post_path, method: :delete, data: {confirm: "정말 삭제하시겠습니까?"} if @post.deletable_by? current_user %>
+              <% end %>
+								<%= link_to '목록보기', board_posts_path %>
+						</div>
+					</div>
+
+			<!--댓글 show Start-->
+					<div class="post-comment-wrapper">
+						<% @post.comments.each do |comment| %>
+						<div class="post-comment">
+									<div class="profile-image" style="background-image: url(<%= comment.user.profile.url %>)"></div>
+									<div class="content">
+										<p><a href="/home/mypage/<%= comment.user.id %>"><%= comment.user.name %></a></p>
+										<%= comment.content %> &nbsp;&nbsp; - &nbsp; &nbsp; 
+									<% if ((Time.now-comment.created_at)/86400).to_i < 7 %>
+							      <%= ((Time.now-comment.created_at)/86400).to_i %>일 전
+							    <% elsif ((Time.now-comment.created_at)/(86400*7)).to_i < 4 %>
+							      <%= ((Time.now-comment.created_at)/(86400*7)).to_i %>주 전
+							    <% else %>
+							      <%= ((Time.now-comment.created_at)/(86400*30)).to_i %>달 전
+							    <% end %> 
+										&nbsp;&nbsp;
+										<div class="content-tool">
+											<% if user_signed_in? %>
+												<% if comment.updatable_by? current_user %>
+												<a style="cursor:pointer" id="posts-comment-toggle<%= comment.id %>"><i class="fa fa-pencil"></i></a>
+												<script>
+													$('#posts-comment-toggle<%= comment.id %>').click(function(){
+														var toggle = $(this).parent().next();
+														if( toggle.is(':hidden') ){
+																toggle.slideDown();
+														} else {
+																toggle.slideUp();
+														}
+													});
+												</script>
+												&nbsp;&nbsp;
+												<% end %>
+												<% if comment.deletable_by? current_user %>
+												<a rel="nofollow" data-method="delete" data-confirm='정말로 삭제하시겠습니까?' href=<%= "/boards/"+@board.id.to_s+"/posts/"+@post.id.to_s+"/comments/"+comment.id.to_s %>><i class="fa fa-trash-o"></i></a>
+												<% end %>
+											<% end %>
+										</div>
+										<div id="comment-edit<%= comment.id %>" class="comment-edit" style="display: none;">
+											<%= form_for board_post_comment_path(post_id: @post.id), method: :patch, url: "/boards/"+@board.id.to_s+"/posts/"+@post.id.to_s+"/comments/"+comment.id.to_s, class: "new_comment" do |f| %>
+											<%= f.text_field :content, value: comment.content, name:"comment[content]", class:"comment_content" %>
+											<div class="btn-group">
+												<input type="submit" name="commit" value="수정하기" class="btn-darkyellow">
+											</div>
+											<% end %>
+										</div>
+									</div>
+						</div>
+						<% end %>
+					</div>
+					<!--댓글 div END -->
+
+					<div class="comment-create">
+						<%= form_for [@board, @post, @post.comments.build], class: "new_comment" do |f| %>
+						  <div class="field">
+							<%= f.text_field :content, placeholder: "댓글을 입력해주세요", class: "input-text" %>
+							<%= f.submit '댓글 달기', class: "btn-darkyellow" %>
+						  </div>
+						<% end %>
+						<!--<form class="new_comment" id="new_comment" action="/boards/1/posts/406/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="MRYtMjY9eLn5yYprHTNnC4tRsQhOJigsEVUVcBe5w1Re0gaaxjhN86MkyZ8BzKNOEOS+S2Aw0wAdSI+Mt/gAsA==">-->
+						<!--	<div class="field">-->
+						<!--		<input placeholder="댓글을 입력해주세요" type="text" name="comment[content]" id="comment_content">-->
+						<!--		<input type="submit" name="commit" value="댓글 달기" class="btn-darkyellow">-->
+						<!--	</div>-->
+						<!--</form>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</article>

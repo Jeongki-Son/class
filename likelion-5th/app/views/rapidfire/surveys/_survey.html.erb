@@ -1,0 +1,42 @@
+<!--<tr id= "survey_<%= survey.id %>">-->
+<!--  <td>-->
+<!--    <% if can_administer? %>-->
+<!--      <%= link_to survey.name, survey_questions_path(survey) %>-->
+<!--    <% else %>-->
+<!--      <%= survey.name %>-->
+<!--    <% end %>-->
+<!--  </td>-->
+<!--  <td>-->
+<!--    <ul class="horizontal-list">-->
+<!--      <li><%= link_to "Answer Questions", new_survey_attempt_path(survey) %></li>-->
+<!--      <% if can_administer? %>-->
+<!--        <li><%= link_to "Results", [:results, survey] %></li>-->
+<!--        <li><%= link_to "Delete", survey, method: :delete %></li>-->
+<!--      <% end %>-->
+<!--    </ul>-->
+<!--  </td>-->
+<!--</tr>-->
+<div class="col s6 m3 l3 masonry-brick" id="masonry-item" style="position: relative; top: 0px; left: 0px;">
+	<div class="craft-wrapper" id= "survey_<%= survey.id %>">
+		<div class="craft-screen_shot">
+				<div class="thumbnail" style="background-image: url(http://class.likelion.net/assets/likelion_lionhead-cfe87567897b3b10f5d56c5412590bff7abd90878c0f144b9b8263bb8a66e2be.png); "></div>
+		</div>
+		<div class="craft-explain">
+			<% if can_administer? %>
+        <%= link_to survey.name, survey_questions_path(survey) %>
+      <% else %>
+        <%= survey.name %>
+      <% end %>
+		</div>
+		<div class="craft-assess-wrapper">
+			<div class="craft-plain-assess">
+			  <% if can_administer? %>
+          <%= link_to "결과보기", [:results, survey], class: "btn-darkorange" %>
+          <%= link_to "삭제하기", survey, method: :delete, class:"btn-darkyellow" %>
+        <% else %>
+  			  <%= link_to '제출하기', new_survey_attempt_path(survey), class: "btn-gray" %>
+        <% end %>
+			</div>
+		</div>
+	</div>
+</div>

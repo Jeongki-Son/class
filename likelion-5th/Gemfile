@@ -5,17 +5,34 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'figaro'
+gem 'pry-rails'
+gem 'awesome_print'
+gem 'deep_cloneable', '~> 2.2.2'
+gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'impressionist'
+gem 'kaminari'
+gem 'rapidfire'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'carrierwave'
-gem 'ransack', github: 'activerecord-hackery/ransack'
+# gem 'ransack', github: 'activerecord-hackery/ransack'
+
 gem 'devise'
+gem 'rolify'     # role 관리
+gem 'authority'  # 권한설정
+
 gem 'activeadmin', github: 'activeadmin'
 gem 'letter_opener', group: :development
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+group :development, :test do
+  gem "sqlite3"
+end
+group :production do
+  gem 'pg'
+end
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets

@@ -1,0 +1,42 @@
+<!--<h2><%= @survey.name %></h2>-->
+<!--<hr/>-->
+
+<!--<%= form_for([@survey, @attempt_builder]) do |f| %>-->
+<!--  <%- @attempt_builder.answers.each do |answer| %>-->
+<!--    <%= f.fields_for("#{answer.question.id}", answer) do |answer_form| %>-->
+<!--      <%= render_answer_form_helper(answer, answer_form) %>-->
+<!--    <% end %>-->
+<!--  <% end %>-->
+<!--  <%= f.submit "Save" %>-->
+<% end %>
+<article>
+	<div class="row">
+		<div class="col s12 m11 l11">
+			<div id="submission-new">
+				<div class="main-container">
+					<h5 class="title"><%= @survey.name %></h5>
+					<%= form_for([@survey, @attempt_builder]) do |f| %>
+            <%- @attempt_builder.answers.each do |answer| %>
+              <%= f.fields_for("#{answer.question.id}", answer) do |answer_form| %>
+                <%= render_answer_form_helper(answer, answer_form) %><br>
+              <% end %>
+            <% end %>
+            <div class="submit">
+            <%= f.submit "제출하기", class: "btn-orange" %>
+            </div>
+          <% end %>
+        </div>
+			</div>
+		</div>
+	</div>
+</article>
+<style>
+  label {
+    font-size: 1rem;
+    color: #9e9e9e;
+  }
+</style>
+<script>
+  $("label").append("<br>");
+  $("textarea").attr("style","background-color: transparent; height: 2rem; width: 100%; transition: all .3s; height:150px;")
+</script>

@@ -1,4 +1,69 @@
-<% @board.posts.each do |post| %>
-  <%= link_to post.title, board_post_path(@board, id: post.id) %>
-<% end %>
-<%= link_to '글쓰기', new_board_post_path(@board) %>
+<!--<% @board.posts.each do |post| %>-->
+<!--  <%= link_to post.title, board_post_path(@board, id: post.id) %><br>-->
+<!--  <% if user_signed_in? %>-->
+<!--    <%= link_to 'edit', edit_board_post_path(@board, id: post.id) if post.updatable_by? current_user %>&nbsp;-->
+<!--    <%= link_to 'trash', [@board, post], method: :delete, data: { confirm: 'Are you sure?' } if post.deletable_by? current_user %>-->
+<!--  <% end %>-->
+<!--<% end %>-->
+<article id="desktop">
+	<div class="row">
+		<div class="col s12 m11 l11">
+			<div class="table-wrapper">
+				<div class="main-container">
+					<img class="post-img" src="<%= image_url("talk-200-2a5b809381e19da585dd5a3475d6f4172e69680798b873e15d8d48e2b4e61bf2.png") %>" alt="Talk 200 2a5b809381e19da585dd5a3475d6f4172e69680798b873e15d8d48e2b4e61bf2">
+					<h4><strong><%= @board.title %></strong></h4>
+					<br>
+					<br>
+					<br>
+					<div class="write">
+						<div class="wrap">
+						  <%= search_form_for(@q, {url: board_posts_path, class: "search"}) do |f| %>
+                <%= f.search_field :title_cont, class: "validate searchTerm", placeholder: "게시물 찾기" %>
+                <button name="button" type="submit" class="searchButton">
+					 	   		<i class="fa fa-search"></i>
+                </button>
+          		<% end %>
+            </div>
+			        <form class="button_to" method="get" action="<%= new_board_post_path(@board) %>">
+			          <button class="btn-darkyellow" type="submit">
+			          <i class="material-icons">mode_edit</i>글쓰기
+                </button>
+              </form>
+          </div>
+					<br>
+					<table class="bordered highlight">
+						<thead>
+						  <tr>
+								<th data-field="title">제목(댓글수)</th>
+								<th data-field="author">작성자</th>
+								<th data-field="date">날짜</th>
+								<th data-field="view">view</th>
+							</tr>
+						</thead>
+						<tbody>
+						  <% @post.reverse.each do |post| %>
+								<tr>
+									<td>
+										<%= link_to post.title+" ("+post.comments.count.to_s+")", board_post_path(@board, id: post.id) %>
+									</td>
+									<td><a href="/home/mypage/1"><%= User.find(post.user_id).name %></a></td>
+									<% if ((@day-post.created_at)/86400).to_i < 7 %>
+							      <td><%= ((@day-post.created_at)/86400).to_i %>일 전</td>
+							    <% elsif ((@day-post.created_at)/(86400*7)).to_i < 4 %>
+							      <td><%= ((@day-post.created_at)/(86400*7)).to_i %>주 전</td>
+							    <% else %>
+							      <td><%= ((@day-post.created_at)/(86400*30)).to_i %>달 전</td>
+							    <% end %>
+							    <td><%= post.impressionist_count %></td>
+								</tr>
+							<% end %>
+						</tbody><tbody>
+					</tbody></table>
+					<div class="flickr_pagination">
+    				<%= paginate @post %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</article>

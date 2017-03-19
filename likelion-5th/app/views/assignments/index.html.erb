@@ -1,12 +1,39 @@
-<% @assignment.each do |assignment| %>
-  <div class="field">
-    <%= assignment.title %>
-    <% if assignment.users.find_by(email: current_user.email).nil? %>
-    <%= link_to '제출하기', new_assignment_submission_path(assignment) %>
-    <% else %>
-    <%= link_to '훔쳐보기', assignment_submissions_path(assignment) %>
-    <% check = User.find(current_user.id).submissions.ids & Assignment.find(assignment.id).submissions.ids %>
-    <%= link_to '수정하기', edit_assignment_submission_path(assignment, id: check[0]) %>
-    <% end %>
-  </div>  
-<% end %>
+<article id="assignment-craft">
+	<div class="row masonry" id="masonry-container" style="position: relative; height: 867px;">
+    <% @assignment.each do |assignment| %>
+  	<div class="col s6 m3 l3 masonry-brick" id="masonry-item" style="position: relative; top: 0px; left: 0px;">
+  		<div class="craft-wrapper">
+  			<div class="craft-screen_shot">
+  			  <% if assignment.submissions != [] %>
+  					<% if assignment.submissions.find_by(user_id: current_user.id).imagefile.url(:thumb) == nil %>
+							<div class="thumbnail" style="background-image: url(<%= image_url("likelion_lionhead.png") %>);"></div>
+						<% else %>
+							<div class="thumbnail" style="background-image: url(<%= assignment.submissions.find_by(user_id: current_user.id).imagefile.url(:thumb) %>);"></div>
+						<% end %>
+					<% else %>
+					  <div class="thumbnail" style="background-image: url(<%= image_url("likelion_lionhead.png") %>);"></div>
+					<% end %>
+  			</div>
+  			<div class="craft-explain">
+  				<%= assignment.title %>
+  			</div>
+  			<div class="craft-assess-wrapper">
+  			  <% if assignment.users.find_by(email: current_user.email).nil? %>
+  				<div class="craft-plain-assess">
+  				  <%= link_to '제출하기', new_assignment_submission_path(assignment), class: "btn-gray" %>
+  				</div>
+  				<% else %>
+  				<div class="craft-plain-assess">
+            <%= link_to '훔쳐보기', assignment_submissions_path(assignment), class: "btn-darkorange" %>
+          </div>
+          <div class="craft-plain-assess">
+            <% check = User.find(current_user.id).submissions.ids & Assignment.find(assignment.id).submissions.ids %>
+            <%= link_to '수정하기', edit_assignment_submission_path(assignment, id: check[0]), class: "btn-darkyellow" %>
+          </div>
+          <% end %>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</article>

@@ -39,7 +39,6 @@ class AssignmentsController < ApplicationController
   
   def destroy
     @assignment.destroy
-    
     respond_to do |format|
       format.html { redirect_to assignments_url }
     end

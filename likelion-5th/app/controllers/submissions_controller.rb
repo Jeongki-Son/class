@@ -27,12 +27,15 @@ class SubmissionsController < ApplicationController
   end
   
   def edit
+    authorize_action_for @submission
   end
   
   def show
   end
   
   def update
+    authorize_action_for @submission
+    
     respond_to do |format|
       if @submission.update(get_parameters)
         format.html { redirect_to [@assignment, @submission], notice: "과제가 안전하게 수정되었습니다!" }
@@ -43,8 +46,9 @@ class SubmissionsController < ApplicationController
   end
   
   def destroy
-    @submission.destroy
+    authorize_action_for @submission
     
+    @submission.destroy
     respond_to do |format|
       format.html { redirect_to assignments_url }
     end
@@ -53,7 +57,7 @@ class SubmissionsController < ApplicationController
   private
   
   def get_parameters
-   params.require(:submission).permit(:c9url, :giturl, :content)
+   params.require(:submission).permit(:herokuurl, :giturl, :content, :imagefile)
   end
   
   def submission_common

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Likelion5th</title>
+    <link rel="shortcut icon" type="image/png" href="<%= image_url("favicon.png") %>"/>
+    <title>Classlion 5th | 서울과학기술대학교</title>
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -33,7 +34,7 @@
         </div>
       </div>
       <div class="right">
-        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="My Page" href="/home/mypage/1297" data-tooltip-id="c6b282b2-3cbf-afde-96c8-2fa89679d29f">
+        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="My Page" href="/home/mypage/<%= current_user.id %>" data-tooltip-id="c6b282b2-3cbf-afde-96c8-2fa89679d29f">
     			<img src="<%= image_url("mypage-1f8644ea139b97fc24fab94ad6e4473ab826c6d5067eb7f95110dc057656251b.png") %>" alt="Mypage 1f8644ea139b97fc24fab94ad6e4473ab826c6d5067eb7f95110dc057656251b">
         </a>
         <a class="myedit tooltipped" data-position="bottom" data-delay="50" data-tooltip="내 정보 수정" href="/users/edit" data-tooltip-id="317f90de-113d-a0ca-32bd-847bad60724c">
@@ -58,13 +59,17 @@
     		</div>
   	</div>
   	<div id="menu" style="overflow:auto;">
-		<a href="/home/mypage/1297">
+		<a href="/home/mypage/<%= current_user.id %>">
 			<div class="profile-wrapper">
 				<div class="profile">
-						<div class="profile-img" style="background-image: url(http://class.likelion.net/assets/profile-640eaa3d76dcfbb0db96fc587bd2a9975e0c30eb343c8a4cb8cbf28a01589617.png)"></div>
+    			  <% if current_user.profile.url == nil %>
+    					<div class="profile-img" style="background-image: url(<%= image_url("profile.png") %>)"></div>
+    				<% else %>
+    					<div class="profile-img" style="background-image: url(<%= current_user.profile.url %>);"></div>
+    				<% end %>
 	        	<div class="profile-p">
 				<p>
-					<span>손정기</span>님
+					<span><%= current_user.name %></span>님
 					<br>서울과학기술대
 				</p>
 	       	  </div>
@@ -122,14 +127,15 @@
         	<span>&nbsp;게시판<i class="fa fa-chevron-left "></i></span></a>
        	  <ul id="dropdown-nav">
              <li><a href="/boards/1/posts">공지사항</a></li>
-             <li><a href="/boards/2/posts">건의 사항</a></li>
+             <li><a href="/boards/2/posts">건의사항</a></li>
              <li><a href="/boards/3/posts">자유게시판</a></li>
+             <li><a target="_blank" href="https://drive.google.com/drive/u/1/folders/0BwghcluOV01jbl9wS3ZsdUJSeFE">자료실</a></li>
         	</ul>
   			</div>
       </li>
       <div class="list-wrapper">
         <div class="list">
-          <a href="/questions">
+          <a href="/attendances">
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18px" height="20" viewBox="0.25 0.25 18 17.999" xml:space="preserve">
             <path fill-rule="evenodd" clip-rule="evenodd" fill="#F59900" d="M9.045,5.977c0.565,0,1.023-0.458,1.023-1.023
               c0-0.565-0.458-1.023-1.023-1.023c-0.565,0-1.023,0.458-1.023,1.023C8.023,5.519,8.481,5.977,9.045,5.977z M7.614,7.205v0.409h0.818
@@ -138,30 +144,30 @@
               S4.279,18.25,9.25,18.25z"></path>
             </svg>
 
-            <span>&nbsp;질&nbsp;&nbsp;&nbsp;문</span>
+            <span>&nbsp;출&nbsp;&nbsp;&nbsp;석</span>
           </a>
         </div>
       </div>
-       <div class="list-wrapper">
-        <div class="list">
-          <a href="/contacts">
-            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18px" height="20" viewBox="0.25 0.25 18 17.999" enable-background="new 0 0 200 200" xml:space="preserve">
-            <path fill-rule="evenodd" clip-rule="evenodd" fill="#E08A00" d="M3.695,0.346l2.143,2.991c0.144,0.206,0.201,0.434,0.17,0.686
-              c-0.031,0.252-0.134,0.466-0.308,0.64L3.88,6.482c1.038,1.46,2.205,2.837,3.5,4.133c1.275,1.274,2.647,2.441,4.117,3.499
-              l1.834-1.819c0.164-0.175,0.38-0.272,0.648-0.293c0.267-0.02,0.499,0.041,0.693,0.185l2.96,2.097
-              c0.195,0.144,0.309,0.337,0.339,0.578c0.031,0.242-0.036,0.45-0.2,0.624l-2.514,2.498L14.781,18c-0.319,0-0.794-0.084-1.426-0.254
-              c-0.632-0.17-1.336-0.411-2.112-0.725c-0.777-0.314-1.702-0.846-2.776-1.596c-1.074-0.75-2.141-1.655-3.199-2.713
-              C4.22,11.663,3.32,10.594,2.57,9.505c-0.75-1.09-1.285-2.002-1.604-2.737C0.647,6.032,0.409,5.313,0.249,4.609
-              C0.09,3.906,0.008,3.443,0.002,3.221C-0.003,3,0,2.834,0.01,2.72l2.498-2.497c0.186-0.175,0.393-0.247,0.624-0.216
-              C3.364,0.038,3.551,0.15,3.695,0.346z"></path>
-            </svg>
-            <span>&nbsp;연&nbsp;&nbsp;&nbsp;락</span>
-          </a>
-        </div>
-      </div>
+      <!-- <div class="list-wrapper">-->
+      <!--  <div class="list">-->
+      <!--    <a href="/contacts">-->
+      <!--      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18px" height="20" viewBox="0.25 0.25 18 17.999" enable-background="new 0 0 200 200" xml:space="preserve">-->
+      <!--      <path fill-rule="evenodd" clip-rule="evenodd" fill="#E08A00" d="M3.695,0.346l2.143,2.991c0.144,0.206,0.201,0.434,0.17,0.686-->
+      <!--        c-0.031,0.252-0.134,0.466-0.308,0.64L3.88,6.482c1.038,1.46,2.205,2.837,3.5,4.133c1.275,1.274,2.647,2.441,4.117,3.499-->
+      <!--        l1.834-1.819c0.164-0.175,0.38-0.272,0.648-0.293c0.267-0.02,0.499,0.041,0.693,0.185l2.96,2.097-->
+      <!--        c0.195,0.144,0.309,0.337,0.339,0.578c0.031,0.242-0.036,0.45-0.2,0.624l-2.514,2.498L14.781,18c-0.319,0-0.794-0.084-1.426-0.254-->
+      <!--        c-0.632-0.17-1.336-0.411-2.112-0.725c-0.777-0.314-1.702-0.846-2.776-1.596c-1.074-0.75-2.141-1.655-3.199-2.713-->
+      <!--        C4.22,11.663,3.32,10.594,2.57,9.505c-0.75-1.09-1.285-2.002-1.604-2.737C0.647,6.032,0.409,5.313,0.249,4.609-->
+      <!--        C0.09,3.906,0.008,3.443,0.002,3.221C-0.003,3,0,2.834,0.01,2.72l2.498-2.497c0.186-0.175,0.393-0.247,0.624-0.216-->
+      <!--        C3.364,0.038,3.551,0.15,3.695,0.346z"></path>-->
+      <!--      </svg>-->
+      <!--      <span>&nbsp;연&nbsp;&nbsp;&nbsp;락</span>-->
+      <!--    </a>-->
+      <!--  </div>-->
+      <!--</div>-->
       <div class="list-wrapper" style="margin-bottom: 50px;">
         <div class="list">
-          <a href="/renew/events">
+          <a href="/rapidfire">
             <svg version="1.1" baseProfile="basic" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18px" height="20" viewBox="0 0 88.253 95.522" xml:space="preserve">
             <g>
               <path fill="#E08A00" d="M22.359,64.596l12.845,13.033c0.881,0.893,2.048,1.346,3.214,1.346c1.125,0,2.251-0.417,3.126-1.257
@@ -176,7 +182,7 @@
                 z"></path>
             </g>
             </svg>
-            <span>&nbsp;이벤트</span>
+            <span>&nbsp;설문조사</span>
 </a>        </div>
       </div>
 		</ul>
@@ -185,15 +191,7 @@
     <div class="sidenav-background"></div>
       <div class="modal-background"></div>
       <section id="screen_width" style="width: 1296px; min-height: 781px">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <article id="home" class="container">
-          <div class="row">
-            <div class="col s12 m11 l11">
-              <%= yield %>
-            </div>
-          </div>
-        </article>
+        <%= yield %>
       </section>
   </body>
   <footer style="width: 1296px;">

@@ -1,0 +1,57 @@
+<article id="rapidfire">
+	<div class="row">
+		<div class="col s12 m11 l11">
+			<div class="table-wrapper">
+				<div class="main-container">
+					<i class="large material-icons">info_outline</i>
+					<h4><strong>출석체크</strong></h4>
+					<br>
+					<br>
+					<br>
+					<br>
+					<% @attendance.each do |attendance| %>
+					<div class="col s6 m3 l3 masonry-brick" id="masonry-item" style="position: relative; top: 0px; left: 0px;">
+          	<div class="craft-wrapper" id= "survey_<%= attendance.id %>">
+          		<div class="craft-screen_shot">
+          				<div class="thumbnail" style="background-image: url(<%= image_url("likelion_lionhead.png") %>); "></div>
+          		</div>
+          		<div class="craft-explain">
+                  <%= attendance.title %>
+          		</div>
+          		<div class="craft-assess-wrapper">
+          			<div class="craft-plain-assess">
+        			    <%= form_for(@attendancecount) do |f| %>
+                    <div class="field">
+                      <%= f.hidden_field :attendance_id, value: attendance.id, name: "attendance_id" %>
+                      <%= f.hidden_field :name, value: current_user.name %>
+                    </div>
+                    <% if attendance.attendancecounts.find_by(name: current_user.name).nil? && ((Time.now-attendance.created_at/60) < 5) %>
+                      <div class="action">
+                        <%= f.submit '출석하기', class: "btn-gray" %>
+                      </div>
+                    <% else %>
+                      <div class="action">
+                      </div>
+                    <% end %>
+                  <% end %>
+          			</div>
+          		</div>
+          	</div>
+          </div>
+          <% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</article>
+
+<style>
+    .material-icons {
+        vertical-align: middle;
+        font-size: 40px;
+        color: #f29500;
+        display: inline-block;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+</style>

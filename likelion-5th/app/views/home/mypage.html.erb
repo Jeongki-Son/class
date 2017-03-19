@@ -1,0 +1,117 @@
+<article class="row">
+	<div class="col s12 m11 l11" id="mypage">
+		<div class="row">
+			<div class="col s12 m6 l6">
+				<!--<div class='user-photo'>-->
+				<% if @user.profile.url == nil %>
+					<div class="user-photo" style="background-image: url(<%= image_url("profile.png") %>);"></div>
+				<% else %>
+					<div class="user-photo" style="background-image: url(<%= @user.profile.url %>);"></div>
+				<% end %>
+				<!--</div>-->
+			</div>
+			<div class="col s12 m6 l6">
+				<div class="user-profile">
+					<p>
+						<img src="<%= image_url("person-1906a431cee225bba58e3ebd297b5b0794e6e6a355e3a347cf3d827f427e9120.png") %>" alt="Person 1906a431cee225bba58e3ebd297b5b0794e6e6a355e3a347cf3d827f427e9120"><a href="/home/contact"><%= @user.name %></a>
+						<span class="univ"> | 서울과학기술대</span>
+					</p>
+					<p class="subtitle">자기소개</p>
+					<div class="description  scrollbar">
+						<p></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12 m6 l6">
+				<div class="myprogress-wrapper">
+					<div class="myprogress center-align">
+						<img src="<%= image_url("class-e86afa32e5f725bc59964d0fc6dfbc6f953de3ec161b84c79c0ef38c7b9ed583.png") %>" alt="Class e86afa32e5f725bc59964d0fc6dfbc6f953de3ec161b84c79c0ef38c7b9ed583">
+						<p>강의 출석</p>
+						<p class="percent">
+							<%= @attendance_percent %>%&nbsp;(<%= @user.attendancecounts.count %> / <%= Attendance.count %>)</p>
+						<div class="progress">
+							<div class="determinate" style="width: <%= @attendance_percent %>%"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l6">
+				<div class="myprogress-wrapper">
+					<div class="myprogress center-align">
+						<i class="fa fa-file-code-o"></i>
+						<p>과제제출</p>
+						<p class="percent">
+							<%= @assignment_percent %>%&nbsp;(<%= @user.submissions.count %> / <%= Assignment.count %>)</p>
+						<div class="progress">
+							<div class="determinate" style="width: <%= @assignment_percent %>%"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12 m6 l6">
+				<div class="content-wrapper">
+					<p class="subtitle">작성한 글 &amp; 질문</p>
+					<div class="content-1 scrollbar">
+						<% @user.posts.each do |post| %>
+							<div class="content-box">
+								<img src="<%= image_url("talk-200-2a5b809381e19da585dd5a3475d6f4172e69680798b873e15d8d48e2b4e61bf2.png") %>" alt="Talk db34876d9026734b2a485901b73abcddac9b2014f0d454c37e04900b2d13ba5f">
+								<p><a href="<%= board_post_path(post.board, post) %>"><%= raw post.content %></a></p>
+								<p id="title"><%= post.board.title %></p>
+								<% if ((@day-post.created_at)/86400).to_i < 7 %>
+						      <p><%= ((@day-post.created_at)/86400).to_i %>일 전</p>
+						    <% elsif ((@day-post.created_at)/(86400*7)).to_i < 4 %>
+						      <p><%= ((@day-post.created_at)/(86400*7)).to_i %>주 전</p>
+						    <% else %>
+						      <p><%= ((@day-post.created_at)/(86400*30)).to_i %>달 전</p>
+						    <% end %>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l6">
+				<div class="content-wrapper">
+					<p class="subtitle">작성한 댓글</p>
+					<div class="content-2 scrollbar">
+						<% @user.comments.each do |comment| %>
+							<div class="content-box">
+									<% if comment.commentable_type == "Post" %>
+									<% @commentable = comment.commentable %>
+										<a href="/boards/<%= @commentable.board_id %>/posts/<%= comment.commentable_id %>"><%= comment.content %></a>
+									<% elsif comment.commentable_type == "Submission" %>
+									<% @commentable = comment.commentable %>
+										<a href="/assignments/<%= @commentable.assignment_id %>/submissions/<%= comment.commentable_id %>"><%= comment.content %></a>
+									<% end %>
+								</p>
+								<% if ((@day-comment.created_at)/86400).to_i < 7 %>
+						      <p><%= ((@day-comment.created_at)/86400).to_i %>일 전</p>
+						    <% elsif ((@day-comment.created_at)/(86400*7)).to_i < 4 %>
+						      <p><%= ((@day-comment.created_at)/(86400*7)).to_i %>주 전</p>
+						    <% else %>
+						      <p><%= ((@day-comment.created_at)/(86400*30)).to_i %>달 전</p>
+						    <% end %>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s12 m12 l12 edit-btn">
+					<a class="default-orange-btn" href="/users/edit">
+						<i class="fa fa-pencil"></i>
+						회원정보수정
+					</a>&nbsp;&nbsp;
+					<a class="default-orange-btn" href="/home/mypoint/<%= @user.id %>">
+						<i class="fa fa-paper-plane-o"></i>
+						내 포인트 보기
+					</a>
+			</div>
+		</div>
+	</div>
+</article>

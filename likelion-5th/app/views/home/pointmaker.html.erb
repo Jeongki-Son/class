@@ -1,0 +1,33 @@
+<% if current_user.roles.find_by(name: "admin").nil? == false %>
+  <%= form_for @point, url: "/home/pointcreate" do |f| %>
+    <div class="field">
+      <%= f.label :username %><br>
+      <%= f.select :username, User.all.collect {|p| [ p.name, p.name ] }, :class => "menu" %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :reason %><br>
+      <%= f.select :point, @pointhash.collect {|name, point| [ name, point ] }, :class => "menu" %>
+      <%= f.hidden_field :reason, :class => "menu", value: "자체 모임스터디" %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :point %><br>
+      <%= f.select :pointvalue, ( -10 .. 10 ), selected: 2, :class => "menu" %>
+    </div>
+    
+    <div class="action">
+      <%= f.submit "제출" %>
+    </div>
+  <% end %>
+<% end %>
+<script>
+  $("#point_point").change(function(){
+    var point = $("#point_point option:selected").text();
+    $("#point_reason").val(point)
+  });
+  $("#point_point").change(function(){
+    var point = $("#point_point option:selected").val();
+    $("#point_pointvalue").val(point)
+  })
+</script>
